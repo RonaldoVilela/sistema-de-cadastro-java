@@ -14,6 +14,7 @@ Ao digitar o nome, o programa invalidará aquele com uso de carácteres que poss
 Ao digitar um e-mail, o programa invalidará aquele que não segue o padrao: nome@provedor.com
 
 Ao digitar uma senha, o programa invalidará aquela que possua menos de 4 caracteres ou possua algum caractere especial
+
 -------------------------------------------------------------
 
 Ao logar em uma conta o usuário terá as seguintes opções:
