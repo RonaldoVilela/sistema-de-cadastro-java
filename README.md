@@ -1,4 +1,4 @@
-O objetivo desse programa, é simular de forma simples um sistema de cadastro e login de contas, e salvando seus dados em um arquivo para um acesso futuro.
+O objetivo desse programa, é simular de forma simples um sistema de cadastro e login de contas, e salvar seus dados em um arquivo para um acesso futuro.
 -------------------------------------------------------------
 
 Ao iniciar, o usuário terá as seguintes opções:
