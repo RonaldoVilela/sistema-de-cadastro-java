@@ -1,11 +1,11 @@
 O objetivo desse programa, é simular de forma simples um sistema de cadastro e login de contas, e salvando seus dados em um arquivo para um acesso futuro.
 -------------------------------------------------------------
 
-Ao iniciar o usuário terá as seguintes opções:
-1- Criar nova conta
-2- Fazer login
-3- Sair
-
+Ao iniciar, o usuário terá as seguintes opções:
+<p>1- Criar nova conta</p>
+<p>2- Fazer login</p>
+<p>3- Sair</p>
+<p></p>
 (Caso ainda não ouver nenhuma conta salva no arquivo, a ação de fazer login é cancelada)
 
 -------------------------------------------------------------
@@ -18,12 +18,12 @@ Ao digitar uma senha, o programa invalidará aquela que possua menos de 4 caract
 
 -------------------------------------------------------------
 
-Ao logar em uma conta o usuário terá as seguintes opções:
-1- Excluir conta
-2- Sair da conta
+Ao logar em uma conta, o usuário terá as seguintes opções:
+<p>1- Excluir conta</p>
+<p>2- Sair da conta</p>
 
 
 Qualquer adição ou remoção de uma conta é salva dentro de um arquivo de texto(contas.txt) onde ficam as informações de cada conta(nome, e-mail e senha).
 
-O formato dos dados salvos de uma conta no arquivo de texto é: <nome>;<e-mail>;<senha>
-Onde cada linha representa uma conta diferente.
+O formato dos dados salvos de uma conta no arquivo de texto é: nome;e-mail;senha
+<p>Onde cada linha representa uma conta diferente.</p>
