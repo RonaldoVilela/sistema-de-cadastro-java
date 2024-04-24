@@ -8,7 +8,8 @@ Ao iniciar o usuário terá as seguintes opções:
 
 (Caso ainda não ouver nenhuma conta salva no arquivo, a ação de fazer login é cancelada)
 
-#### CRIANDO UMA CONTA ####----------------------------------
+-------------------------------------------------------------
+#### CRIANDO UMA CONTA ####
 Ao digitar o nome, o programa invalidará aquele com uso de carácteres que possam afetar o funcionamento de algumas operações (como o ";" por exemplo)
 
 Ao digitar um e-mail, o programa invalidará aquele que não segue o padrao: nome@provedor.com
