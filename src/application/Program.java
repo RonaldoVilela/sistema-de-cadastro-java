@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -57,10 +56,12 @@ public class Program {
 				codigo = 0;
 				pause(1000);
 			}
-			//limparTela();
 		}
 		sc.close();
 	}
+	
+	//================================
+	// CADASTRO E LOGIN
 	
 	static void cadastrar() {
 		System.out.println("=== CADASTRO ===");
@@ -70,11 +71,12 @@ public class Program {
 
 		sc.nextLine();
 		do {
-			System.out.print("Nome: ");
+			System.out.print("Digite seu nome: ");
 
 			nome = sc.nextLine();
 			
 			if(nome.equals("q")) {
+				System.out.println("*Ação cancelada* \n");
 				return;
 			}
 		}while(!Account.nomeValido(nome));
@@ -82,10 +84,11 @@ public class Program {
 		String email = null;
 		
 		do {
-			System.out.print("E-mail: ");
+			System.out.print("Informe o e-mail: ");
 			email = sc.next();
 			
 			if(email.equals("q")) {
+				System.out.println("*Ação cancelada* \n");
 				return;
 			}
 		}while(!Account.emailValido(email));
@@ -93,20 +96,23 @@ public class Program {
 		String senha = null;
 		
 		do {
-			System.out.print("Senha: ");
+			System.out.print("Crie uma senha: ");
 			senha = sc.next();
 			
 			if(senha.equals("q")) {
+				System.out.println("*Ação cancelada* \n");
 				return;
 			}
 		}while(!Account.senhaValida(senha));
 		
 		accounts.add(new Account(nome, email, senha));
 		salvarContas();
-		System.out.println("*Conta salva com sucesso*");
+		System.out.println("*Conta salva com sucesso* \n");
 		pause(1000);
 		
 	}
+	
+	//----------------------------------------------
 	
 	static void login() {
 		if(accounts.size() == 0) {
@@ -120,12 +126,13 @@ public class Program {
 		
 		Account conta = null;
 		do {
-			System.out.print("E-mail: ");
+			System.out.print("Informe o e-mail: ");
 			
 			String email = null;
 			email = sc.next();
 			
 			if(email.equals("q")) {
+				System.out.println("*Ação cancelada* \n");
 				return;
 			}
 				
@@ -145,9 +152,10 @@ public class Program {
 		System.out.println("Você está entrando na conta de: "+conta.getName());
 		String senha = null;
 		do {
-			System.out.print("Senha: ");
+			System.out.print("Digite a senha: ");
 			senha = sc.next();
 			if(senha.equals("q")) {
+				System.out.println("*Ação cancelada* \n");
 				return;
 			}
 			
@@ -155,6 +163,7 @@ public class Program {
 		contaAtual = conta;
 		
 	}
+	//==========================================
 	
 	static void acessarPerfil() {
 		int codigo = 0;
@@ -167,8 +176,18 @@ public class Program {
 			System.out.println("1 - Excluir conta");
 			System.out.println("2 - Sair da conta \n");
 			
-			System.out.print("Digite o código: ");
-			codigo = sc.nextInt();
+			try {
+				System.out.print("Digite o código: ");
+				codigo = sc.nextInt();
+				
+				
+			}catch(InputMismatchException e) {
+	
+				System.out.println("!Código Inválido! \n");
+				sc.nextLine();
+				codigo = 0;
+				pause(1000);
+			}
 			
 			if(codigo == 1) {
 				excluirContaAtual();
@@ -180,6 +199,9 @@ public class Program {
 		}while(codigo != 2);
 	}
 	
+	//========================================
+	// FUNÇÕES ADICIONAIS
+	
 	public static void pause(long mills) {
 		try {
 			Thread.sleep(mills);
@@ -188,8 +210,10 @@ public class Program {
 		}
 	}
 	
+	//------------
+	
 	static void salvarContas() {
-		File contas = new File("res\\contas.txt");
+		File contas = new File("src\\contas.txt");
 		
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(contas))){
 			for(Account a: accounts) {
@@ -201,8 +225,10 @@ public class Program {
 		}
 	}
 	
+	//--------------
+	
 	static void carregarContas() {
-		File contas = new File("res\\contas.txt");
+		File contas = new File("src\\contas.txt");
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(contas))){
 			String linha = br.readLine();
@@ -212,14 +238,20 @@ public class Program {
 				linha = br.readLine();
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
 		}
 	}
+	
+	//--------------------
 	
 	static void excluirContaAtual() {
 		accounts.remove(contaAtual);
 		contaAtual = null;
 		salvarContas();
+		System.out.println("*Conta excluída*");
+		System.out.println("----------------- \n");
+		pause(1000);
 	}
+	
+	//=====================================
 
 }

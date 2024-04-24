@@ -36,8 +36,8 @@ public class Account{
 	}
 	
 	public static boolean nomeValido(String nome) {
-		if(nome.contains(";") || nome.contains(":")) {
-			System.out.println("!No nome, não é permitido o uso de caracteres especiais como: [;:!?.*//\\]!");
+		if(nome.contains(";") || nome.contains(":") || nome.contains("!") || nome.contains("?")) {
+			System.out.println("!No nome, não é permitido o uso de caracteres especiais como: [;:!?]!");
 			Program.pause(1000);
 			return false;
 		}
@@ -46,11 +46,30 @@ public class Account{
 	
 	public static boolean emailValido(String email) {
 		if(email.contains(" ") || email.contains(";")) {
-			System.out.println("!No email, não é permitido o uso de espaço ou caracteres especiais como: [;:!.*//\\]!");
+			System.out.println("\"E-mail invalido!\"");
 			Program.pause(1000);
 			return false;
 		}
 		if(!email.contains("@")) {
+			System.out.println("E-mail invalido!");
+			Program.pause(1000);
+			return false;
+		}
+		
+		try {
+			String end = email.split("@")[1];
+			
+			if(end.substring(0,end.lastIndexOf(".")).length() < 1) {
+				System.out.println("E-mail invalido!");
+				Program.pause(1000);
+				return false;
+			}
+			if(end.substring(end.lastIndexOf("."), end.length() - 1).length() < 3) {
+				System.out.println("E-mail invalido!");
+				Program.pause(1000);
+				return false;
+			}
+		}catch(Exception e) {
 			System.out.println("E-mail invalido!");
 			Program.pause(1000);
 			return false;
@@ -67,8 +86,8 @@ public class Account{
 	}
 	
 	public static boolean senhaValida(String senha) {
-		if(senha.contains(" ") || senha.contains(";")) {
-			System.out.println("!Na senha, não é permitido o uso de espaço ou caracteres especiais como: [;:!.*//\\]!");
+		if(senha.contains(" ") || senha.contains(";") || senha.contains(".") || senha.contains(":")) {
+			System.out.println("!Na senha, não é permitido o uso de espaço ou caracteres especiais como: [;:.]!");
 			Program.pause(1000);
 			return false;
 		}
